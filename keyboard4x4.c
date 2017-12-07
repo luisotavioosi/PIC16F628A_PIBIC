@@ -13,7 +13,7 @@
 #define row_D   RB7_bit
 
 
-void pulse(char number);                //FunÁ„o para pulsar o led1
+void pulse(char number);                //Fun√ß√£o para pulsar o led1
 
 
 char control = 0x01;
@@ -27,10 +27,10 @@ void interrupt()
       T0IF_bit = 0x00;                    //Limpa a flag
       TMR0     = 0x6C;                    //Reinicia o timer0
       
-      if(col_1 && control == 0x01)        //Coluna 1 em nÌvel high? Control igual 1?
+      if(col_1 && control == 0x01)        //Coluna 1 em n√≠vel high? Control igual 1?
       {                                   //Sim...
          control = 0x02;
-         col_1 = 0x00;                    //Apenas a coluna 1 em nÌvel baixo
+         col_1 = 0x00;                    //Apenas a coluna 1 em n√≠vel baixo
          col_2 = 0x01;
          col_3 = 0x01;
       
@@ -40,10 +40,10 @@ void interrupt()
          else if(!row_D) pulse(11);
       
       }
-      else if(col_2 && control == 0x02)   //Coluna 2 em nÌvel high? Control igual 2?
+      else if(col_2 && control == 0x02)   //Coluna 2 em n√≠vel high? Control igual 2?
       {                                   //Sim...
          control = 0x03;
-         col_1 = 0x01;                    //Apenas a coluna 2 em nÌvel baixo
+         col_1 = 0x01;                    //Apenas a coluna 2 em n√≠vel baixo
          col_2 = 0x00;
          col_3 = 0x01;
          
@@ -53,10 +53,10 @@ void interrupt()
          else if(!row_D) pulse(10);
 
       }
-      else if(col_3 && control == 0x03)   //Coluna 3 em nÌvel high? Control igual 3?
+      else if(col_3 && control == 0x03)   //Coluna 3 em n√≠vel high? Control igual 3?
       {                                   //Sim...
          control = 0x01;
-         col_1 = 0x01;                    //Apenas a coluna 3 em nÌvel baixo
+         col_1 = 0x01;                    //Apenas a coluna 3 em n√≠vel baixo
          col_2 = 0x01;
          col_3 = 0x00;
          
@@ -75,19 +75,19 @@ void interrupt()
 } //end interrupt
 
 
-// --- FunÁ„o Principal
+// --- Fun√ß√£o Principal
 void main()
 {
      CMCON      = 0x07;                   //Desabilita os comparadores
-     OPTION_REG = 0x86;                   //Timer0 incrementa com ciclo de instruÁ„o, prescaler 1:128
-     GIE_bit    = 0x01;                   //Habilita interrupÁ„o global
-     PEIE_bit   = 0x01;                   //Habilita interrupÁ„o por perifÈricos
-     T0IE_bit   = 0x01;                   //Habilita interruÁ„o do Timer0
+     OPTION_REG = 0x86;                   //Timer0 incrementa com ciclo de instru√ß√£o, prescaler 1:128
+     GIE_bit    = 0x01;                   //Habilita interrup√ß√£o global
+     PEIE_bit   = 0x01;                   //Habilita interrup√ß√£o por perif√©ricos
+     T0IE_bit   = 0x01;                   //Habilita interru√ß√£o do Timer0
 
      TMR0       = 0x6C;                   //Inicia o timer0
 
      TRISA = 0x03;                        //Entrada em RA0 e RA1
-     TRISB = 0xF0;                        //Nibble mais significativo do PORTB ser· entrada
+     TRISB = 0xF0;                        //Nibble mais significativo do PORTB ser√° entrada
      PORTA = 0x03;                        //RA0 e RA1 iniciam em high
      PORTB = 0xFF;                        //Nibble mais significativo inicia em high.
 
@@ -103,7 +103,7 @@ void main()
 
 void pulse(char number)
 {
-   char i;                                //vari·vel de iteraÁıes
+   char i;                                //vari√°vel de itera√ß√µes
    
    for(i=0;i<number;i++)
    {
